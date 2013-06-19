@@ -8,6 +8,7 @@ $: << File.expand_path('../lib', __FILE__)
 require 'stylus/sprockets'
 require 'sprockets/cache/memcache_store'
 require 'sinatra'
+require 'sinatra/static_cache'
 require 'rss'
 
 configure do
@@ -37,7 +38,15 @@ configure :production do
   settings.assets.css_compressor = YUI::CssCompressor.new
 end
 
+include Sinatra::StaticCache if production?
+
 helpers do
+  def asset_path(name)
+    asset = settings.assets[name]
+    raise UnknownAsset, "Unknown asset: #{name}" unless asset
+    "/assets/#{asset.digest_path}"
+  end
+
   def fetch_posts
     settings.cache.fetch :posts, 10800 do
       resp = Nestful.get('http://blog.alexmaccaw.com/feed')
