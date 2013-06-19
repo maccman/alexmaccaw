@@ -12,8 +12,16 @@ module Sinatra
       return unless path.start_with?(public_dir) and File.file?(path)
 
       env['sinatra.static_file'] = path
-      expires 1.year.to_i, :public, :max_age => 31536000
+      expires 31557600, :public, :max_age => 31536000
       send_file path, :disposition => nil
+    end
+  end
+end
+
+if production?
+  module Sinatra
+    class Application
+      include Sinatra::StaticCache
     end
   end
 end

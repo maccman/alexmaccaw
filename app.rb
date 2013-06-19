@@ -38,8 +38,6 @@ configure :production do
   settings.assets.css_compressor = YUI::CssCompressor.new
 end
 
-include Sinatra::StaticCache if production?
-
 helpers do
   def asset_path(name)
     asset = settings.assets[name]
