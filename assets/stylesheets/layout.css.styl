@@ -1,0 +1,187 @@
+@import './mixins'
+
+html, body {
+  margin: 0
+  padding: 0
+}
+
+body {
+  font-family: "freight-sans-pro", "Myriad Pro", "Myriad", sans-serif
+  font-size: 15px
+  color: #57534a
+  overflow-x: hidden
+}
+
+* {
+  box-sizing: border-box
+}
+
+a {
+  color: #423F37
+  text-decoration: none
+
+  &:hover {
+    color: #D32626
+  }
+}
+
+header.header {
+  display: block
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  width: 20%
+  border-right: 1px solid transparent
+  text-align: center
+
+  section {
+    position: absolute
+    width: 130px
+    left: 50%
+    top: 50%
+    text-align: center
+
+    margin-top: -150px
+    margin-left: -65px
+  }
+
+  h1 {
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 16px
+    margin: 0 0 4px 0
+    color: #000
+  }
+
+  h3 {
+    color: #a19c91
+    color: #423f37
+    font-weight: 400
+    font-size: 13px
+    margin: 0 0 14px 0
+  }
+
+  img {
+    width: 131px
+    display: block
+    margin-bottom: 12px
+  }
+
+  .media {
+    font-size: 25px
+
+    a {
+      color: #68665F
+      transition: color 300ms linear
+
+      &:hover {
+        color: #000
+      }
+    }
+
+    .icon-comments {
+      padding-left: 1px
+    }
+  }
+}
+
+header.header:after {
+  content: ""
+  position: absolute
+  top: 15%
+  bottom: 15%
+  right: -1px
+  width: 1px
+  background: linear-gradient(top, rgba(227, 224, 216, 0) 0%, #e3e0d8 20%, #e3e0d8 80%, rgba(227, 224, 216, 0) 100%)
+}
+
+article.article {
+  position: absolute
+  left: 25%
+  top: 50%
+  margin-top: -265px
+
+  width: 80%
+  overflow: hidden
+
+  .lhc, .rhc {
+    float: left
+  }
+
+  .rhc {
+    margin-left: 10%
+  }
+
+  section {
+    margin-top: 10px
+
+    &:first-child {
+      margin-top: 0
+    }
+  }
+
+  h2 {
+    font-size: 17px
+    font-weight: 600
+    line-height: 30px
+    margin: 0
+    color: #423F37
+  }
+
+  ul {
+    margin: 0
+    padding: 0
+    list-style: none
+  }
+
+  lh {
+    display: block
+    margin-top: 10px
+    font-style: italic
+  }
+
+  lh:first-child {
+    margin-top: 0
+  }
+
+  lh:after {
+    content: ':'
+  }
+}
+
+@media (max-width: 770px) {
+  header.header {
+    position: static
+    width: auto
+    padding: 15px
+
+    section {
+      position: static
+      left: auto
+      top: auto
+      width: auto
+      margin: 0
+      text-align: left
+    }
+
+    h3 {
+      font-size: 15px
+    }
+
+    img {
+      display: none
+    }
+  }
+
+  article.article {
+    position: static
+    margin: 0
+    padding: 0 15px 15px 15px
+
+    .lhc, .rhc {
+      float: none
+      margin: 0
+    }
+  }
+}
