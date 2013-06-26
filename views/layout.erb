@@ -10,8 +10,23 @@
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'layout.css' %>">
-  <script type="text/javascript" src="//use.typekit.net/ioc7rle.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script src="//use.typekit.net/ioc7rle.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+  <script>
+    (function(){
+      if ( typeof document.addEventListener !== 'function' ) return;
+
+      document.addEventListener('DOMContentLoaded', function(){
+        var email = document.querySelector('header a.icon-comments');
+        var gpg   = document.querySelector('header .gpg');
+        email.addEventListener('click', function(e){
+          e.preventDefault();
+          gpg.classList.add('active');
+        }, false);
+      }, false);
+    }).call(this);
+  </script>
 </head>
 <body>
   <header class="header">
@@ -25,6 +40,12 @@
         <a href="https://github.com/maccman" class="icon-github" title="My GitHub"></a>
         <a href="mailto:alex@alexmaccaw.com" class="icon-comments" title="Say hello"></a>
       </div>
+
+      <p class="gpg">
+        <strong>Email</strong>: <a href="mailto:alex@alexmaccaw.com">alex@alexmaccaw.com</a><br />
+        <strong>Key ID</strong>: <a href="/key.txt">CBB1BD61</a><br />
+        <strong>Fingerprint</strong>: 4E7B BF06 8912 11C8 51D7 7781 AF61 8363 CBB1 BD61
+      </p>
     </section>
   </header>
 
