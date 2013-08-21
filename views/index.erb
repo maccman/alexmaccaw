@@ -3,7 +3,15 @@
     <h2>Latest articles</h2>
     <ul>
       <% @posts.each do |post| %>
-        <li><a href="<%= post[:url] %>"><%= post[:title] %></a></li>
+        <li>
+          <a href="<%= post[:url] %>">
+            <%= post[:title] %>
+
+            <% if post == @posts.first %>
+              - <span>new!</span>
+            <% end %>
+          </a>
+        </li>
       <% end %>
     </ul>
   </section>
@@ -60,6 +68,7 @@
   <section>
     <h2>Libraries &amp; Specs</h2>
     <ul>
+      <li><a href="https://github.com/maccman/sourcemap" title="SourceMap and Ruby">SourceMap - <span>new!</span></a></li>
       <li><a href="https://github.com/spine/spine" title="A JavaScript MVC framework">Spine</a></li>
       <li><a href="https://github.com/bower/bower" title="A JavaScript Package manager">Bower</a></li>
       <li><a href="http://blog.alexmaccaw.com/requestautocomplete" title="A spec for programatically requesting autocomplete data">requestAutocomplete</a></li>
