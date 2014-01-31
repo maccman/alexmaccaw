@@ -30,6 +30,14 @@ a.banner {
   padding: 3px
   text-align: center
   display: block
+
+  -webkit-transition: -webkit-transform 320ms
+  -moz-transition: -moztransform 320ms
+  transition: transform 320ms
+
+  &:not(.active) {
+    transform: translate3d(0, -100%, 0);
+  }
 }
 
 header.header {

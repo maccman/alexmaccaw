@@ -12,10 +12,17 @@
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'layout.css' %>">
   <script type="text/javascript" src="//use.typekit.net/ioc7rle.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <script>
+    setTimeout(function(){
+      var banner = document.body.querySelector('.banner');
+      banner.classList.add('active');
+    }, 300);
+  </script>
 </head>
 <body>
   <a href="mailto:alex+pitch@alexmaccaw.com" class="banner">
-    Available for freelance work &mdash; pitch me.
+    I'm available for freelance work in February and March &mdash; send me an email.
   </a>
 
   <header class="header">
