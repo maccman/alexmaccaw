@@ -45,14 +45,8 @@ helpers do
     "/assets/#{asset.digest_path}"
   end
 
-  def fetch_posts
-    settings.cache.fetch :posts, 10800 do
-      resp = Nestful.get('http://blog.alexmaccaw.com/feed')
-      feed = RSS::Parser.parse(resp.body)
-      feed.items.map {|e|
-        {title: e.title.content, url: e.link.href}
-      }
-    end
+  def cached_posts
+    settings.cache.get :posts
   end
 end
 
@@ -62,7 +56,7 @@ get '/assets/*' do
 end
 
 get '/' do
-  @posts = fetch_posts[0..4]
+  @posts = cached_posts
   erb :index
 end
 

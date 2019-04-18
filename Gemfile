@@ -1,4 +1,4 @@
-# ruby '2.0.0'
+ruby '2.5.0'
 source 'https://rubygems.org'
 
 gem 'sinatra'
@@ -13,3 +13,4 @@ gem 'closure-compiler'
 gem 'yui-compressor'
 gem 'rake'
 gem 'uglifier'
+gem 'sprockets-memcache-store', github: 'maccman/sprockets-memcache-store'

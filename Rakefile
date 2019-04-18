@@ -17,3 +17,32 @@ namespace :assets do
     end
   end
 end
+
+namespace :posts do
+  def unescape_entities(entities)
+    entities.gsub('&amp;', '&')
+  end
+
+  def fetch_posts
+    page  = 1
+    items = []
+
+    loop do
+      resp = Nestful.get('https://blog.alexmaccaw.com/feed?page=%s' % page)
+      feed = RSS::Parser.parse(resp.body)
+      break unless feed && feed.items.any?
+
+      items += feed.items.map {|e|
+        {title: unescape_entities(e.title.content), url: e.link.href}
+      }
+      page += 1
+    end
+
+    items
+  end
+
+  desc 'Cache'
+  task :cache => :app do
+    settings.cache.set(:posts, fetch_posts)
+  end
+end
