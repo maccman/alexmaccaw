@@ -33,9 +33,7 @@ configure :development do
 end
 
 configure :production do
-  settings.assets.cache          = Sprockets::Cache::MemcacheStore.new
-  settings.assets.js_compressor  = Closure::Compiler.new
-  settings.assets.css_compressor = YUI::CssCompressor.new
+  settings.assets.cache = Sprockets::Cache::MemcacheStore.new
 end
 
 helpers do
