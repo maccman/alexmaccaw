@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/maccman/sprockets-memcache-store.git
+  remote: https://github.com/maccman/sprockets-memcache-store.git
   revision: d972b64a413fe5d6ec40126493afcd09e0178454
   specs:
     sprockets-memcache-store (0.0.4)
@@ -22,7 +22,7 @@ GEM
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
-    rake (12.3.2)
+    rake (12.3.3)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
